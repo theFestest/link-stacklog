@@ -1,5 +1,6 @@
 """Module for stack operations"""
 import random
+from typing import Optional
 
 from .database import get_database
 
@@ -17,7 +18,7 @@ def push_link(log_name, url, title, description) -> None:
     db["links"].insert({"log_name": log_name, "url": url, "title": title, "description": description})
 
 
-def pop_link(log_name) -> dict | None:
+def pop_link(log_name) -> Optional[dict]:
     """
     Remove and return the most recently added link from the database.
 
