@@ -1,9 +1,9 @@
 """Module for link data and metadata"""
-from typing import Optional
+from typing import Optional, Tuple
 import requests
 from bs4 import BeautifulSoup
 
-def fetch_metadata(url) -> tuple[Optional[str], Optional[str]]:
+def fetch_metadata(url) -> Tuple[Optional[str], Optional[str]]:
     try:
         response = requests.get(url, timeout=10)
         response.raise_for_status()
