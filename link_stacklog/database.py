@@ -1,10 +1,11 @@
 """Module for initializing and connecting to the SQLite database"""
 import datetime
-import sqlite_utils
-import pathlib
 import os
+import pathlib
+import shutil
 
 import click
+import sqlite_utils
 
 DATABASE_FILE = "linkstacklog.db"
 
@@ -36,3 +37,12 @@ def init_db():
     }, pk="id", defaults={"timestamp": datetime.datetime.now().isoformat()})
 
     return user_dir() / DATABASE_FILE
+
+def backup_db():
+    """Makes a copy of the entire SQLite database with a filename
+    containing the ISO date time.
+    """
+    backup_filename = f"{DATABASE_FILE}_backup_{datetime.datetime.now().isoformat()}.db"
+    backup_path = user_dir() / backup_filename
+    shutil.copyfile(user_dir() / DATABASE_FILE, backup_path)
+    return backup_path

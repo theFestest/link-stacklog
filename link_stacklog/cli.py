@@ -1,6 +1,6 @@
 """Module which defines the link-stacklog command line interface"""
 import click
-from .database import init_db
+from .database import init_db, backup_db
 from .stack import (
     peak_links,
     pop_link,
@@ -35,7 +35,13 @@ def cli():
 def init_database_command():
     "Initialize the stacklog database"
     filename = init_db()
-    click.echo(f"Initilized database at {filename}")
+    click.echo(f"Initilized database at: '{filename}'")
+
+@cli.command(name="backup")
+def backup_database_command():
+    "Backup the stacklog database"
+    filename = backup_db()
+    click.echo(f"Backed up current database to: '{filename}'")
 
 
 @cli.command(name="push")
