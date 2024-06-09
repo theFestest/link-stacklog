@@ -10,7 +10,10 @@ classifiers = [
     "License :: OSI Approved :: Apache Software License"
 ]
 dependencies = [
-    "click"
+    "click",
+    "requests",
+    "beautifulsoup4",
+    "sqlite_utils",
 ]
 
 [project.urls]
