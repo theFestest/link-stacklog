@@ -1,6 +1,6 @@
 """Module for stack operations"""
 import random
-from typing import Optional
+from typing import Optional, List
 
 from .database import get_database
 
@@ -46,7 +46,7 @@ def pop_link(log_name) -> Optional[dict]:
         return None
 
 
-def view_links(log_name, num_elements) -> list[dict]:
+def view_links(log_name, num_elements) -> List[dict]:
     """
     Retrieve a specified number of links from the database for a specific log.
 
